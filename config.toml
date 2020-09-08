@@ -1,5 +1,5 @@
 # Site settings
-baseURL = "http://test-repository-m.netlify.app/"
+baseURL = "https://test-repository-m.netlify.app/"
 languageCode = "en-us"
 title = "Forty"
 theme = "forty"
@@ -184,7 +184,7 @@ disqusShortname = ""
     city = "City, ST 00000"
     country = "Country"
 
-  # Footer section
+
   [params.footer]
     enable = true
     copyright = "Company Name"
