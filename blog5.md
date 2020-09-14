@@ -10,3 +10,7 @@ keywords: ""
 slug: blog5
 title: Mask acceptance
 ---
+
+summary(cars)
+
+plot(cars)
