@@ -104,16 +104,16 @@ disqusShortname = ""
       url = "blogs/tempus"
 
     [[params.tiles.showcase]]
-      title = "Magna"
+      title = "BLOG 8 BITCH"
       subtitle = "Lorem Etiam Nullam"
       image = "pic03.jpg"
-      url = "blogs/magna"
+      url = "blogs/blog8"
 
     [[params.tiles.showcase]]
-      title = "Ipsum"
+      title = "BLOG 7 YAY"
       subtitle = "Nisl Sed Aliquam"
       image = "pic04.jpg"
-      url = "blogs/ipsum"
+      url = "blogs/blog7"
 
     [[params.tiles.showcase]]
       title = "Consequat"
@@ -122,10 +122,10 @@ disqusShortname = ""
       url = "blogs/blog5"
 
     [[params.tiles.showcase]]
-      title = "Etiam"
+      title = "BLOG 6 BUBBA"
       subtitle = "Feugiat Amet Tempus"
       image = "pic06.jpg"
-      url = "blogs/ipsum"
+      url = "blogs/blog6"
     # You can make more showcases by copy and pasting the code above
 
   [params.blog]
