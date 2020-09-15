@@ -14,8 +14,35 @@ This is an R Markdown document. Markdown is a simple formatting syntax for autho
 
 When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
 
-```{r cars}
-summary(cars)
+```{r gapminder}
+library(tidyverse)  # Load ggplot2, dplyr, and all the other tidyverse packages
+library(gapminder)  # gapminder dataset
+library(here)
+
+```
+
+```{r}
+glimpse(gapminder)
+
+head(gapminder, 20) # look at the first 20 rows of the dataframe
+
+```
+```{r}
+
+country_data <- gapminder %>% 
+            filter(country == "India") # just choosing Greece, as this is where I come from
+
+continent_data <- gapminder %>% 
+            filter(continent == "Asia")
+```
+
+```{r}
+plot1 <- ggplot(data = country_data, mapping = aes(x = year, y = lifeExp))+
+  geom_point() +
+  geom_smooth(se = FALSE)+
+ NULL 
+
+plot1
 ```
 
 ## Including Plots
