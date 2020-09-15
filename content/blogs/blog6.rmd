@@ -1,5 +1,5 @@
 ---
-title: "blog6.rmd"
+title: "BLOG 6 YAAAYY"
 output: html_document
 slug: blog6
 ---
