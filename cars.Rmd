@@ -1,7 +1,7 @@
 ---
-title: "blog7.rmd"
+title: "test"
 output: html_document
-slug: blog7
+slug: cars
 ---
 
 ```{r setup, include=FALSE}
@@ -16,18 +16,15 @@ When you click the **Knit** button a document will be generated that includes bo
 
 ```{r cars}
 summary(cars)
+cars
 ```
 
 ## Including Plots
 
 You can also embed plots, for example:
 
-```{r pressure, echo=FALSE}
-plot(pressure)
-```
-
-```{r}
-plot(pressure)
+```{r pressure}
+ggplot(cars,aes(x=speed,y=dist))
 ```
 
 Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
