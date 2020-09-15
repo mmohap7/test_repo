@@ -1,0 +1,105 @@
+---
+title: "elections"
+output: html_document
+slug: elections
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+```{r}
+library(tidyverse)  # Load ggplot2, dplyr, and all the other tidyverse packages
+library(mosaic)
+library(ggthemes)
+library(lubridate)
+library(fivethirtyeight)
+library(here)
+library(skimr)
+library(janitor)
+library(vroom)
+library(tidyquant)
+library(patchwork)
+```
+
+
+```{r cars}
+
+CA_contributors_2016 <- vroom("CA_contributors_2016.csv")
+
+glimpse(CA_contributors_2016)
+```
+
+```{r}
+zip_codes <- read_csv("zip_code_database.csv")
+
+CA_contributors_2016$zip <- as.character(CA_contributors_2016$zip)
+```
+```{r}
+campaign <- inner_join(CA_contributors_2016,zip_codes,by='zip')
+glimpse(campaign)
+```
+```{r}
+Total_contb <-campaign %>% 
+  group_by(cand_nm) %>% 
+  summarise(total_amt = sum(contb_receipt_amt)) %>% 
+  arrange(desc(total_amt))
+```
+
+```{r}
+
+Clinton_plot <- ggplot(filter(campaign,cand_nm=="Clinton, Hillary Rodham" & state == "CA") %>%  
+               group_by(primary_city) %>% 
+               summarise(total_amt_county = sum(contb_receipt_amt)) %>%
+               arrange(desc(total_amt_county)) %>%
+               slice_max(total_amt_county,n=10),aes(
+                 x=total_amt_county,
+                 y=reorder(primary_city,total_amt_county))) +
+  geom_col(fill="red") + 
+  labs(title = "Hillary Clinton") + 
+  theme_clean() + 
+  ylab(" ") + 
+  xlab("Amount") + 
+  scale_x_continuous(labels=scales::comma) +
+  NULL
+```
+
+```{r}
+Trump_plot <- ggplot(filter(campaign,cand_nm=="Trump, Donald J." & state == "CA") %>%  
+                       group_by(primary_city) %>% 
+                       summarise(total_amt_county = sum(contb_receipt_amt)) %>%
+                       arrange(desc(total_amt_county)) %>%
+                       slice_max(total_amt_county,n=10),aes(
+                         x = total_amt_county,
+                         y = reorder(primary_city,total_amt_county),)) +
+  geom_col(fill= "blue") +
+  labs(title="Donald Trump") +
+  theme_clean() + ylab(" ") +
+  xlab("Amount") +
+  scale_x_continuous(labels = scales::comma) +
+  NULL
+```
+```{r}
+library(patchwork)
+
+combined_plot <- Trump_plot +  
+  Clinton_plot + 
+  plot_annotation(title = "Where did the candidates raise most money?")
+
+combined_plot
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.

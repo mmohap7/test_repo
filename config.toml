@@ -110,10 +110,10 @@ disqusShortname = ""
       #url = "blogs/blog8"
 
     [[params.tiles.showcase]]
-      title = "BLOG 7 YAY"
+      title = "ELECTIONS"
       subtitle = "Nisl Sed Aliquam"
       image = "pic04.jpg"
-      url = "blogs/blog7"
+      url = "blogs/elections"
 
     [[params.tiles.showcase]]
       title = "WEATHER ANALYSIS"
