@@ -19,9 +19,9 @@ library(here)
 ```
 
 
-```{r cars}
+```{r brexit}
 brexit_results <- read_csv("brexit_results.csv")
-glimpse(brexit_results)
+glimpse(brexit_results) 
 ```
 
 ```{r}
@@ -47,12 +47,3 @@ ggplot(brexit_results, aes(x = born_in_uk, y = leave_share)) +
 What can you say about the relationship shown above? Again, don't just say what's happening in the graph. Tell some sort of story and speculate about the differences in the patterns.
 
 > The scatterplot of leave share corresponding to the percentage of native born population in various constituencies, clearly depicts that a majority of scatter points are populating the higher end of of the graph (correponding to higher leave share or the population which voted yes). This indicates that a majority of the constituencies in UK have a native born population and these constituencies had a higher leave share when compared to constituencies with comparitively less native born population. ***A major reason could be that in constituencies with higher native born population preferred UK to have more control over its immigration policies and border***.
-## Including Plots
-
-You can also embed plots, for example:
-
-```{r pressure, echo=FALSE}
-plot(pressure)
-```
-
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
