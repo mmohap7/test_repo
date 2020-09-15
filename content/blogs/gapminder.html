@@ -68,6 +68,44 @@ continent_data &lt;- gapminder %&gt;%
 plot1</code></pre>
 <pre><code>## `geom_smooth()` using method = &#39;loess&#39; and formula &#39;y ~ x&#39;</code></pre>
 <p><img src="/blogs/gapminder_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<pre class="r"><code> plot1&lt;- ggplot(data = country_data, mapping = aes(x = year, y = lifeExp))+
+   geom_point() +
+   geom_smooth(se = FALSE) +
+   labs(title = &quot;Life Expectancy in India over the years&quot;,
+       x = &quot;Year&quot;,
+       y = &quot;Life Expectancy&quot;) +
+   NULL
+
+
+print(plot1)</code></pre>
+<pre><code>## `geom_smooth()` using method = &#39;loess&#39; and formula &#39;y ~ x&#39;</code></pre>
+<p><img src="/blogs/gapminder_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<pre class="r"><code> ggplot(data = continent_data , mapping = aes(x = year , y = lifeExp , colour=country ))+
+  geom_point() + 
+  geom_smooth(se = FALSE) +
+   NULL</code></pre>
+<pre><code>## `geom_smooth()` using method = &#39;loess&#39; and formula &#39;y ~ x&#39;</code></pre>
+<p><img src="/blogs/gapminder_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<pre class="r"><code> ggplot(data = gapminder , mapping = aes(x = year , y = lifeExp , colour= continent))+
+  geom_point() + 
+ geom_smooth(se = FALSE) +
+   facet_wrap(~continent) +
+ theme(legend.position=&quot;none&quot;)</code></pre>
+<pre><code>## `geom_smooth()` using method = &#39;loess&#39; and formula &#39;y ~ x&#39;</code></pre>
+<p><img src="/blogs/gapminder_files/figure-html/unnamed-chunk-6-1.png" width="672" />
+Given these trends, what can you say about life expectancy since 1952? Again, don’t just say what’s happening in the graph. Tell some sort of story and speculate about the differences in the patterns.</p>
+<blockquote>
+<p>Life Expectancies in:</p>
+</blockquote>
+<blockquote>
+<ul>
+<li><em>Africa</em> : increased significantly since 1952 even though when compared to other continents life expectancy remained significantly lower.The reason could be that the effects of globalisation and improvement in healthcare facilities were more prominent in continents such as Americas and Europe when compared to Africa.</li>
+<li><em>America</em> : America already had a higher life expectancy when compared to Africa and Asia. With signifancts improvements in medical field and introduction of vaccines and disease eradication initiatives(example, polio eradiaction initiative was introduced in 1980) , the average life expectancy is seen to increase by almost 20+ years from 1952 to 2000 in Americas.</li>
+<li><em>Asia</em> : Asia also saw a significant increase in life expectancy ranging from 45+ in 1952 to almost 70 in 2000. Even though the curve isn’t as steep as that of America, significant changes in lifestyle and healthcare have contributed to this growth. Also, with a large proportion of <strong>developing</strong> countries in Asia facing the problem of overpopulation and shortage of healthcare facilities, the life expectancy growth isn’t at par with continents with large numbers of <strong>developed</strong> countries such as <strong>Europe</strong> and <strong>America</strong> .</li>
+<li><em>Europe</em> : With already a high life expectancy (second only to Oceania) in 1952,Europe also saw a significant rise in life expectancy to almost 80 years in 2000. Since Europe has a large proportion of countries which were industrialised significantly early when compared to countries in continents, this could lead to higher average life expectancy in Europe in 1952.</li>
+<li><em>Oceania</em> : Oceania had the highest life expectancy in 1952 when compared to other continents and the same trend continued for in the year 2000 as well. The reason for this could lie in the fact the oceania comprises of significantly fewer countires and population when compared to other continents.</li>
+</ul>
+</blockquote>
 </div>
 <div id="including-plots" class="section level2">
 <h2>Including Plots</h2>

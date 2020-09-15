@@ -81,9 +81,9 @@ disqusShortname = ""
   [params.banner]
     # To change the background image on the homepage banner, replace 'banner.jpg' in
     # the 'static/img' folder.
-    title = "Hi, my name is Forty"
-    subtitle = "A RESPONSIVE SITE TEMPLATE DESIGNED BY HTML5 UP\nAND RELEASED UNDER THE CREATIVE COMMONS."
-    buttonText = "Get Started"
+    title = "MELONICA MOHAPATRA"
+    subtitle = "LONDON BUSINESS SCHOOL MAM'2021"
+    buttonText = "CHECK OUT MY PROJECTS!"
 
 
   # Tiles Section

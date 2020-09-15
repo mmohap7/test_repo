@@ -44,6 +44,42 @@ plot1 <- ggplot(data = country_data, mapping = aes(x = year, y = lifeExp))+
 
 plot1
 ```
+```{r}
+ plot1<- ggplot(data = country_data, mapping = aes(x = year, y = lifeExp))+
+   geom_point() +
+   geom_smooth(se = FALSE) +
+   labs(title = "Life Expectancy in India over the years",
+       x = "Year",
+       y = "Life Expectancy") +
+   NULL
+
+
+print(plot1)
+```
+
+```{r}
+ ggplot(data = continent_data , mapping = aes(x = year , y = lifeExp , colour=country ))+
+  geom_point() + 
+  geom_smooth(se = FALSE) +
+   NULL
+```
+```{r}
+ ggplot(data = gapminder , mapping = aes(x = year , y = lifeExp , colour= continent))+
+  geom_point() + 
+ geom_smooth(se = FALSE) +
+   facet_wrap(~continent) +
+ theme(legend.position="none")
+```
+Given these trends, what can you say about life expectancy since 1952? Again, don't just say what's happening in the graph. Tell some sort of story and speculate about the differences in the patterns.
+
+> Life Expectancies in:
+
+> * *Africa* : increased significantly since 1952 even though when compared to other continents life expectancy remained significantly lower.The reason could be that the effects of globalisation and improvement in healthcare facilities were more prominent in continents such as Americas and Europe when compared to Africa.
+> * *America* : America already had a higher life expectancy when compared to Africa and Asia. With signifancts improvements in medical field and introduction of vaccines and disease eradication initiatives(example, polio eradiaction initiative was introduced in 1980) , the average life expectancy is seen to increase by almost 20+ years from 1952 to 2000 in Americas.
+> * *Asia* : Asia also saw a significant increase in life expectancy ranging from 45+ in 1952 to almost 70 in 2000. Even though the curve isn't as steep as that of America, significant changes in lifestyle and healthcare have contributed to this growth. Also, with a large proportion of **developing** countries in Asia facing the problem of overpopulation and shortage of healthcare facilities, the life expectancy growth isn't at par with continents with large numbers of **developed** countries such as **Europe** and **America** .
+> * *Europe* : With already a high life expectancy (second only to Oceania) in 1952,Europe also saw a significant rise in life expectancy to almost 80 years in 2000. Since Europe has a large proportion of countries which were industrialised significantly early when compared to countries in continents, this could lead to higher average life expectancy in Europe in 1952.
+> * *Oceania* : Oceania had the highest life expectancy in 1952 when compared to other continents and the same trend continued for in the year 2000 as well. The reason for this could lie in the fact the oceania comprises of significantly fewer countires and population when compared to other continents.
+
 
 ## Including Plots
 
