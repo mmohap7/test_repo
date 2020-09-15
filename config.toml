@@ -95,7 +95,7 @@ disqusShortname = ""
       title = "Elections"
       subtitle = "Ipsum Dolor Sit Amet"
       image = "pic01.jpg"
-      url = "blogs/elections.rmd"
+      url = "blogs/elections"
 
     [[params.tiles.showcase]]
       title = "Cars"
