@@ -1,7 +1,7 @@
 ---
-title: "BLOG 6 YAAAYY"
+title: "blog11.rmd HELLO"
 output: html_document
-slug: blog6
+slug: blog11
 ---
 
 ```{r setup, include=FALSE}

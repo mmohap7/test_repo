@@ -1,7 +1,7 @@
 ---
-title: "BLOG 6 YAAAYY"
+title: "HELLO THIS IS BLOG 10"
 output: html_document
-slug: blog6
+slug: blog10
 ---
 
 ```{r setup, include=FALSE}
@@ -22,7 +22,7 @@ summary(cars)
 
 You can also embed plots, for example:
 
-```{r pressure, echo=FALSE}
+```{r pressure}
 plot(pressure)
 ```
 
