@@ -90,10 +90,6 @@
   </url>
   
   <url>
-    <loc>/blogs/weather/</loc>
-  </url>
-  
-  <url>
     <loc>/blogs/gapminder/</loc>
   </url>
   
@@ -103,6 +99,10 @@
   
   <url>
     <loc>/blogs/blog10/</loc>
+  </url>
+  
+  <url>
+    <loc>/blogs/weather/</loc>
   </url>
   
 </urlset>
