@@ -116,10 +116,10 @@ disqusShortname = ""
       url = "blogs/blog7"
 
     [[params.tiles.showcase]]
-      title = "Consequat"
+      title = "BREXIT ANALYSIS"
       subtitle = "Ipsum Dolor Sit Amet"
       image = "pic05.jpg"
-      url = "blogs/blog5"
+      url = "blogs/brexit"
 
     [[params.tiles.showcase]]
       title = "GAPMINDER ANALYSIS"

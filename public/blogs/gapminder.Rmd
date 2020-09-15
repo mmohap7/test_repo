@@ -81,12 +81,4 @@ Given these trends, what can you say about life expectancy since 1952? Again, do
 > * *Oceania* : Oceania had the highest life expectancy in 1952 when compared to other continents and the same trend continued for in the year 2000 as well. The reason for this could lie in the fact the oceania comprises of significantly fewer countires and population when compared to other continents.
 
 
-## Including Plots
 
-You can also embed plots, for example:
-
-```{r pressure, echo=FALSE}
-plot(pressure)
-```
-
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
