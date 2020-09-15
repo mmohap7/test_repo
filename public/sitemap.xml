@@ -78,10 +78,6 @@
   </url>
   
   <url>
-    <loc>/blogs/blog6/</loc>
-  </url>
-  
-  <url>
     <loc>/blogs/blog11/</loc>
   </url>
   
@@ -91,6 +87,14 @@
   
   <url>
     <loc>/blogs/blog8/</loc>
+  </url>
+  
+  <url>
+    <loc>/blogs/gapminder/</loc>
+  </url>
+  
+  <url>
+    <loc>/blogs/gapminder/</loc>
   </url>
   
   <url>
