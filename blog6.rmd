@@ -6,6 +6,7 @@ slug: blog6
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
 ```
 
 ## R Markdown
@@ -16,13 +17,17 @@ When you click the **Knit** button a document will be generated that includes bo
 
 ```{r cars}
 summary(cars)
+glimpse(cars)
 ```
 
 ## Including Plots
 
 You can also embed plots, for example:
 
-```{r pressure, echo=FALSE}
+```{r pressure}
+plot(pressure)
+```
+```{r}
 plot(pressure)
 ```
 
