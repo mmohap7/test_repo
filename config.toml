@@ -98,10 +98,10 @@ disqusShortname = ""
       url = "blogs/elections.rmd"
 
     [[params.tiles.showcase]]
-      title = "Tempus"
+      title = "Cars"
       subtitle = "Feugiat Amet Tempus"
       image = "pic02.jpg"
-      url = "blogs/tempus"
+      url = "blogs/cars"
 
     [[params.tiles.showcase]]
       title = "BLOG 8"
