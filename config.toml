@@ -1,5 +1,5 @@
 # Site settings
-baseURL = "https://test-repository-m.netlify.app/"
+baseURL = "https://melonicam07.netlify.app/"
 languageCode = "en-us"
 title = "Forty"
 theme = "forty"
