@@ -91,23 +91,23 @@ disqusShortname = ""
     enable = true
     # Display your showcases here.
     
-    [[params.tiles.showcase]]
-      title = "BLOG 11"
-      subtitle = "Ipsum Dolor Sit Amet"
-      image = "pic01.jpg"
-      url = "blogs/blog11"
+    #[[params.tiles.showcase]]
+     # title = "BLOG 11"
+      #subtitle = "Ipsum Dolor Sit Amet"
+      #image = "pic01.jpg"
+      #url = "blogs/blog11"
 
-    [[params.tiles.showcase]]
-      title = "Cars"
-      subtitle = "Feugiat Amet Tempus"
-      image = "pic02.jpg"
-      url = "blogs/cars"
+    #[[params.tiles.showcase]]
+     # title = "Cars"
+      #subtitle = "Feugiat Amet Tempus"
+      #image = "pic02.jpg"
+      #url = "blogs/cars"
 
-    [[params.tiles.showcase]]
-      title = "BLOG 8"
-      subtitle = "Lorem Etiam Nullam"
-      image = "pic03.jpg"
-      url = "blogs/blog8"
+    #[[params.tiles.showcase]]
+     # title = "BLOG 8"
+      #subtitle = "Lorem Etiam Nullam"
+      #image = "pic03.jpg"
+      #url = "blogs/blog8"
 
     [[params.tiles.showcase]]
       title = "BLOG 7 YAY"
@@ -136,16 +136,16 @@ disqusShortname = ""
     # To add more blogs just copy and paste the code.
 
   # Section Type Two
-  [params.two]
-    enable = true
-    title = "Massa libero"
-    subtitle = """Nullam et orci eu lorem consequat tincidunt vivamus et sagittis libero. 
-    Mauris aliquet magna magna sed nunc rhoncus pharetra. 
-    Pellentesque condimentum sem. In efficitur ligula tate urna. Maecenas laoreet massa vel lacinia pellentesque lorem ipsum dolor. 
-    Nullam et orci eu lorem consequat tincidunt. Vivamus et sagittis libero.
-    Mauris aliquet magna magna sed nunc rhoncus amet pharetra et feugiat tempus."""
-    buttonText = "Get Started"
-    url = "blogs"
+  #[params.two]
+    #enable = true
+    #title = "Massa libero"
+    #subtitle = """Nullam et orci eu lorem consequat tincidunt vivamus et sagittis libero. 
+    #Mauris aliquet magna magna sed nunc rhoncus pharetra. 
+    #Pellentesque condimentum sem. In efficitur ligula tate urna. Maecenas laoreet massa vel lacinia pellentesque lorem ipsum dolor. 
+    #Nullam et orci eu lorem consequat tincidunt. Vivamus et sagittis libero.
+    #Mauris aliquet magna magna sed nunc rhoncus amet pharetra et feugiat tempus."""
+    #buttonText = "Get Started"
+    #url = "blogs"
 
 
   # Contact section
