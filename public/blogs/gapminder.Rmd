@@ -13,33 +13,51 @@ knitr::opts_chunk$set(echo = TRUE)
 Founded in Stockholm by Ola Rosling, Anna Rosling Rönnlund and Hans Rosling, GapMinder is a non-profit venture promoting sustainable global development and  achievement of the United Nations Millennium Development Goals. It seeks to  increase the use and understanding of statistics about social, economic, and
 environmental development at local, national, and global levels.
 
-It has over ***200*** indicators for all ***192*** United Nations Member countries.
+It has over **200** indicators for all **192** United Nations Member countries.
 
 
 
 ```{r gapminder,echo=FALSE,message=FALSE}
-library(tidyverse)  # Load ggplot2, dplyr, and all the other tidyverse packages
-library(gapminder)  # gapminder dataset
+#loading important packages
+
+#ggplot2, dplyr, and all the other tidyverse packages
+library(tidyverse)  
+
+#gapminder dataset
+library(gapminder) 
+
+#for finding project files in current working directory
 library(here)
 
 ```
 
 ```{r}
-#glimpse(gapminder)
+#gives us valuable information for initial exploratory data analysis
+glimpse(gapminder)
 
-head(gapminder, 20) # look at the first 20 rows of the dataframe
+# look at the first 20 rows of the dataframe
+head(gapminder, 20) 
+
 
 ```
+
+### INDIA AND ASIA - OVER THE YEARS
+
+
 ```{r}
-
+# filtering 'India' from gapminder dataset
 country_data <- gapminder %>% 
-            filter(country == "India") # just choosing Greece, as this is where I come from
+            filter(country == "India") 
 
+#filtering 'Asia' from gapminder dataset, this gives us all Asian countries
 continent_data <- gapminder %>% 
             filter(continent == "Asia")
 ```
 
+### LIFE EXPECTANCY OF INDIA (1950-2020)
+
 ```{r,warning=FALSE,message=FALSE}
+
 plot1 <- ggplot(data = country_data, mapping = aes(x = year, y = lifeExp))+
   geom_point() +
   geom_smooth(se = FALSE)+

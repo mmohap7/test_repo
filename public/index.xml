@@ -125,7 +125,7 @@ When you click the Knit button a document will be generated that includes both c
       <guid>/blogs/gapminder/</guid>
       <description>EXPLORING GAPMINDER DATASET Founded in Stockholm by Ola Rosling, Anna Rosling Rönnlund and Hans Rosling, GapMinder is a non-profit venture promoting sustainable global development and achievement of the United Nations Millennium Development Goals. It seeks to increase the use and understanding of statistics about social, economic, and environmental development at local, national, and global levels.
 It has over 200 indicators for all 192 United Nations Member countries.
-#glimpse(gapminder) head(gapminder, 20) # look at the first 20 rows of the dataframe ## # A tibble: 20 x 6 ## country continent year lifeExp pop gdpPercap ## &amp;lt;fct&amp;gt; &amp;lt;fct&amp;gt; &amp;lt;int&amp;gt; &amp;lt;dbl&amp;gt; &amp;lt;int&amp;gt; &amp;lt;dbl&amp;gt; ## 1 Afghanistan Asia 1952 28.</description>
+#gives us valuable information for initial exploratory data analysis glimpse(gapminder) ## Rows: 1,704 ## Columns: 6 ## $ country &amp;lt;fct&amp;gt; Afghanistan, Afghanistan, Afghanistan, Afghanistan, Afghani… ## $ continent &amp;lt;fct&amp;gt; Asia, Asia, Asia, Asia, Asia, Asia, Asia, Asia, Asia, Asia,… ## $ year &amp;lt;int&amp;gt; 1952, 1957, 1962, 1967, 1972, 1977, 1982, 1987, 1992, 1997,… ## $ lifeExp &amp;lt;dbl&amp;gt; 28.</description>
     </item>
     
     <item>

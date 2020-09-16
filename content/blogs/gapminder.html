@@ -10,10 +10,19 @@ slug: gapminder
 <h2>EXPLORING GAPMINDER DATASET</h2>
 <p>Founded in Stockholm by Ola Rosling, Anna Rosling Rönnlund and Hans Rosling, GapMinder is a non-profit venture promoting sustainable global development and achievement of the United Nations Millennium Development Goals. It seeks to increase the use and understanding of statistics about social, economic, and
 environmental development at local, national, and global levels.</p>
-<p>It has over <strong><em>200</em></strong> indicators for all <strong><em>192</em></strong> United Nations Member countries.</p>
-<pre class="r"><code>#glimpse(gapminder)
-
-head(gapminder, 20) # look at the first 20 rows of the dataframe</code></pre>
+<p>It has over <strong>200</strong> indicators for all <strong>192</strong> United Nations Member countries.</p>
+<pre class="r"><code>#gives us valuable information for initial exploratory data analysis
+glimpse(gapminder)</code></pre>
+<pre><code>## Rows: 1,704
+## Columns: 6
+## $ country   &lt;fct&gt; Afghanistan, Afghanistan, Afghanistan, Afghanistan, Afghani…
+## $ continent &lt;fct&gt; Asia, Asia, Asia, Asia, Asia, Asia, Asia, Asia, Asia, Asia,…
+## $ year      &lt;int&gt; 1952, 1957, 1962, 1967, 1972, 1977, 1982, 1987, 1992, 1997,…
+## $ lifeExp   &lt;dbl&gt; 28.801, 30.332, 31.997, 34.020, 36.088, 38.438, 39.854, 40.…
+## $ pop       &lt;int&gt; 8425333, 9240934, 10267083, 11537966, 13079460, 14880372, 1…
+## $ gdpPercap &lt;dbl&gt; 779.4453, 820.8530, 853.1007, 836.1971, 739.9811, 786.1134,…</code></pre>
+<pre class="r"><code># look at the first 20 rows of the dataframe
+head(gapminder, 20) </code></pre>
 <pre><code>## # A tibble: 20 x 6
 ##    country     continent  year lifeExp      pop gdpPercap
 ##    &lt;fct&gt;       &lt;fct&gt;     &lt;int&gt;   &lt;dbl&gt;    &lt;int&gt;     &lt;dbl&gt;
@@ -37,11 +46,18 @@ head(gapminder, 20) # look at the first 20 rows of the dataframe</code></pre>
 ## 18 Albania     Europe     1977    68.9  2509048     3533.
 ## 19 Albania     Europe     1982    70.4  2780097     3631.
 ## 20 Albania     Europe     1987    72    3075321     3739.</code></pre>
-<pre class="r"><code>country_data &lt;- gapminder %&gt;% 
-            filter(country == &quot;India&quot;) # just choosing Greece, as this is where I come from
+<div id="india-and-asia---over-the-years" class="section level3">
+<h3>INDIA AND ASIA - OVER THE YEARS</h3>
+<pre class="r"><code># filtering &#39;India&#39; from gapminder dataset
+country_data &lt;- gapminder %&gt;% 
+            filter(country == &quot;India&quot;) 
 
+#filtering &#39;Asia&#39; from gapminder dataset, this gives us all Asian countries
 continent_data &lt;- gapminder %&gt;% 
             filter(continent == &quot;Asia&quot;)</code></pre>
+</div>
+<div id="life-expectancy-of-india-1950-2020" class="section level3">
+<h3>LIFE EXPECTANCY OF INDIA (1950-2020)</h3>
 <pre class="r"><code>plot1 &lt;- ggplot(data = country_data, mapping = aes(x = year, y = lifeExp))+
   geom_point() +
   geom_smooth(se = FALSE)+
@@ -84,4 +100,5 @@ Given these trends, what can you say about life expectancy since 1952? Again, do
 <li><em>Oceania</em> : Oceania had the highest life expectancy in 1952 when compared to other continents and the same trend continued for in the year 2000 as well. The reason for this could lie in the fact the oceania comprises of significantly fewer countires and population when compared to other continents.</li>
 </ul>
 </blockquote>
+</div>
 </div>
