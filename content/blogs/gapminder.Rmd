@@ -8,11 +8,14 @@ slug: gapminder
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## R Markdown
+## EXPLORING GAPMINDER DATASET
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+Founded in Stockholm by Ola Rosling, Anna Rosling Rönnlund and Hans Rosling, GapMinder is a non-profit venture promoting sustainable global development and  achievement of the United Nations Millennium Development Goals. It seeks to  increase the use and understanding of statistics about social, economic, and
+environmental development at local, national, and global levels.
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+It has over ***200*** indicators for all ***192*** United Nations Member countries.
+
+
 
 ```{r gapminder,echo=FALSE,message=FALSE}
 library(tidyverse)  # Load ggplot2, dplyr, and all the other tidyverse packages
@@ -36,7 +39,7 @@ continent_data <- gapminder %>%
             filter(continent == "Asia")
 ```
 
-```{r,warning=FALSE}
+```{r,warning=FALSE,message=FALSE}
 plot1 <- ggplot(data = country_data, mapping = aes(x = year, y = lifeExp))+
   geom_point() +
   geom_smooth(se = FALSE)+
@@ -44,7 +47,7 @@ plot1 <- ggplot(data = country_data, mapping = aes(x = year, y = lifeExp))+
 
 plot1
 ```
-```{r}
+```{r,message=FALSE}
  plot1<- ggplot(data = country_data, mapping = aes(x = year, y = lifeExp))+
    geom_point() +
    geom_smooth(se = FALSE) +
@@ -57,13 +60,13 @@ plot1
 print(plot1)
 ```
 
-```{r}
+```{r,message=FALSE}
  ggplot(data = continent_data , mapping = aes(x = year , y = lifeExp , colour=country ))+
   geom_point() + 
   geom_smooth(se = FALSE) +
    NULL
 ```
-```{r}
+```{r,message=FALSE}
  ggplot(data = gapminder , mapping = aes(x = year , y = lifeExp , colour= continent))+
   geom_point() + 
  geom_smooth(se = FALSE) +
