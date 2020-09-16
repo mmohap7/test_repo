@@ -73,8 +73,8 @@ summary(cars) ## speed dist ## Min. : 4.0 Min. : 2.00 ## 1st Qu.:12.0 1st Qu.: 2
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>/blogs/alcohol/</guid>
-      <description>R Markdown This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see http://rmarkdown.rstudio.com.
-When you click the Knit button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:</description>
+      <description>ANALYSING DRINKS DATASET FROM FIVETHIRTYEIGHT PACKAGE library(fivethirtyeight) data(drinks) skim(drinks)  Table 1: Data summary  Name drinks  Number of rows 193  Number of columns 5  _______________________   Column type frequency:   character 1  numeric 4  ________________________   Group variables None    Variable type: character
+  skim_variable n_missing complete_rate min max empty n_unique whitespace    country 0 1 3 28 0 193 0    Variable type: numeric</description>
     </item>
     
     <item>
