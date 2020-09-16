@@ -97,7 +97,7 @@ library(gapminder)
 data <- gapminder %>% filter(year=="2007") %>% dplyr::select(-year)
 
 # Most basic bubble plot
-p<-data %>% filter(continent=="Asia") %>%
+q<-data %>% filter(continent=="Asia") %>%
   arrange(desc(pop)) %>%
   mutate(country = factor(country,country)) %>%
   ggplot(aes(x=gdpPercap, y=lifeExp, size=pop, fill=country)) +
@@ -111,13 +111,13 @@ p<-data %>% filter(continent=="Asia") %>%
     theme(legend.position = "none")
 ```
 
-```{r}
-p <- ggplotly(p)
-p
+```{r,warning=FALSE,message=FALSE,echo=FALSE}
+q <- ggplotly(q)
+q
 ```
 
 
-```{r,warnings=FALSE,echo=FALSE,message=FALSE}
+```{r,warning=FALSE,message=FALSE}
 data(gapminder, package = "gapminder")
 plotdata <- gapminder %>%
   filter(year == 2007) %>%
