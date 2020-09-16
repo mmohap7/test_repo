@@ -103,11 +103,11 @@ disqusShortname = ""
       #image = "pic02.jpg"
       #url = "blogs/cars"
 
-    #[[params.tiles.showcase]]
-     # title = "BLOG 8"
-      #subtitle = "Lorem Etiam Nullam"
-      #image = "pic03.jpg"
-      #url = "blogs/blog8"
+    [[params.tiles.showcase]]
+     title = "ALCOHOL CONSUMPTION"
+      subtitle = "Across the globe"
+      image = "pic03.jpg"
+      url = "blogs/alcohol"
 
     [[params.tiles.showcase]]
       title = "ELECTIONS"
