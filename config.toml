@@ -1,7 +1,7 @@
 # Site settings
 baseURL = "https://melonicam07.netlify.app/"
 languageCode = "en-us"
-title = "Forty"
+title = "MELONICA MOHAPATRA"
 theme = "forty"
 
 # Enter your tracking code to enable Google Analytics
@@ -106,7 +106,7 @@ disqusShortname = ""
     [[params.tiles.showcase]]
      title = "ALCOHOL CONSUMPTION"
       subtitle = "Across the globe"
-      image = "pic03.jpg"
+      image = "alcohol.jpg"
       url = "blogs/alcohol"
 
     [[params.tiles.showcase]]
