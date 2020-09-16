@@ -153,22 +153,15 @@ data(drinks)</code></pre>
 </table>
 <div id="beer-plots" class="section level3">
 <h3>BEER PLOTS</h3>
-<pre class="r"><code>top25_beer_plot &lt;- drinks %&gt;% 
-  top_n(25, beer_servings) %&gt;% #ranked top 25 by beer servings
-  ggplot(aes(
-    x = beer_servings,
-    y = reorder(country,beer_servings) #Ordered countries by beer servings
-  ),colour=country) +
-  geom_col() +
-  labs(
-    x = &quot;Beer Servings&quot;, 
-    y = &quot;Country&quot;, 
-    title = &quot;Top 25 Beer Consuming Countries&quot;) + #added labels to axis and title
-    theme_fivethirtyeight()
-  NULL</code></pre>
-<pre><code>## NULL</code></pre>
-<pre class="r"><code>top25_beer_plot</code></pre>
-<p><img src="/blogs/alcohol_files/figure-html/beer-plots-1.png" width="672" /></p>
+<pre class="r"><code>drinks %&gt;% 
+  top_n(25, beer_servings) %&gt;%
+  mutate(name = fct_reorder(country, beer_servings)) %&gt;%
+  ggplot( aes(x=name, y=beer_servings)) +
+    geom_bar(stat=&quot;identity&quot;, fill=&quot;#f68060&quot;, alpha=.6, width=.4) +
+    coord_flip() +
+    xlab(&quot;&quot;) + ylab(&quot;BEER SERVINGS&quot;)+
+    theme_bw()</code></pre>
+<p><img src="/blogs/alcohol_files/figure-html/beer-plot-1.png" width="672" /></p>
 <blockquote>
 <p>Beer consuming countries are mainly in higher latitudes (north of the Alps), since wheat is widely planted and is an important raw material for beer in these countries. In addition, the beer ranking includes the most continents among other liquors, which may implicate that beer is the most widely accepted and accessible alcohol in the world.</p>
 </blockquote>
@@ -176,42 +169,27 @@ data(drinks)</code></pre>
 </div>
 <div id="top-25-wine-consuming-coutries" class="section level2">
 <h2>TOP 25 WINE CONSUMING COUTRIES</h2>
-<pre class="r"><code>#copied top 25 beer plot and replaced beer with wine
-top25_wine_plot &lt;- drinks %&gt;% 
-  top_n(25, wine_servings) %&gt;% 
-  ggplot(aes(
-    x = wine_servings,
-    y = reorder(country,wine_servings)
-  )) +
-  geom_col() +
-  labs(
-    x = &quot;Wine Servings&quot;, 
-    y = &quot;Country&quot;, 
-    title = &quot;Top 25 Wine Consuming Countries&quot;) + 
-  theme_minimal() +
-  NULL
-
-top25_wine_plot</code></pre>
-<p><img src="/blogs/alcohol_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<pre class="r"><code>drinks %&gt;% 
+  top_n(25, wine_servings) %&gt;%
+  mutate(name = fct_reorder(country, wine_servings)) %&gt;%
+  ggplot( aes(x=name, y=wine_servings)) +
+    geom_bar(stat=&quot;identity&quot;, fill=&quot;#008080&quot;, alpha=.6, width=.4) +
+    coord_flip() +
+    xlab(&quot;&quot;) + ylab(&quot;WINE SERVINGS&quot;)+
+    theme_bw()</code></pre>
+<p><img src="/blogs/alcohol_files/figure-html/wine-plot-1.png" width="672" /></p>
 <blockquote>
 <p>In the wine consumption rankings, 9 of the top 10 are <em>European countries</em>. Most areas of Europe (especially the low latitudes) are very suitable for growing grapes due to sufficient sunlight and fertile soil. The typical ones are Southern France, Portugal, Andorra, Italy, and Greece. This may develop the people’s habit of drinking wine.</p>
 </blockquote>
-<pre class="r"><code>top25_spirit_plot &lt;- drinks %&gt;% 
-  top_n(25, spirit_servings) %&gt;% 
-  ggplot(aes(
-    x = spirit_servings,
-    y = reorder(country,spirit_servings)
-  )) +
-  geom_col() +
-  labs(
-    x = &quot;Spirit Servings&quot;, 
-    y = &quot;Country&quot;, 
-    title = &quot;Top 25 Spirit Consuming Countries&quot;) + 
-  theme_minimal() +
-  NULL
-
-top25_spirit_plot</code></pre>
-<p><img src="/blogs/alcohol_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<pre class="r"><code>drinks %&gt;% 
+  top_n(25, spirit_servings) %&gt;%
+  mutate(name = fct_reorder(country, spirit_servings)) %&gt;%
+  ggplot( aes(x=name, y=spirit_servings)) +
+    geom_bar(stat=&quot;identity&quot;, fill=&quot;#6b4226&quot;, alpha=.6, width=.4) +
+    coord_flip() +
+    xlab(&quot;&quot;) + ylab(&quot;SPIRIT SERVINGS&quot;)+
+    theme_bw()</code></pre>
+<p><img src="/blogs/alcohol_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
 <blockquote>
 <p>In the spirits consumption ranking, six of the top 25 are island countries in the Caribbean and the Pacific, and 11 of the top 25 are East European countries. This conforms to the origins of two very famous spirit types - rum and vodka.</p>
 </blockquote>

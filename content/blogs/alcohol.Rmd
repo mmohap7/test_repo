@@ -37,66 +37,47 @@ skim(drinks)
 
 ### BEER PLOTS
 
-```{r, beer-plots}
-top25_beer_plot <- drinks %>% 
-  top_n(25, beer_servings) %>% #ranked top 25 by beer servings
-  ggplot(aes(
-    x = beer_servings,
-    y = reorder(country,beer_servings) #Ordered countries by beer servings
-  ),colour=country) +
-  geom_col() +
-  labs(
-    x = "Beer Servings", 
-    y = "Country", 
-    title = "Top 25 Beer Consuming Countries") + #added labels to axis and title
-    theme_fivethirtyeight()
-  NULL
 
-top25_beer_plot
+```{r, beer-plot, message=FALSE,warning=FALSE}
+drinks %>% 
+  top_n(25, beer_servings) %>%
+  mutate(name = fct_reorder(country, beer_servings)) %>%
+  ggplot( aes(x=name, y=beer_servings)) +
+    geom_bar(stat="identity", fill="#f68060", alpha=.6, width=.4) +
+    coord_flip() +
+    xlab("") + ylab("BEER SERVINGS")+
+    theme_bw()
 ```
 
 >Beer consuming countries are mainly in higher latitudes (north of the Alps), since wheat is widely planted and is an important raw material for beer in these countries. In addition, the beer ranking includes the most continents among other liquors, which may implicate that beer is the most widely accepted and accessible alcohol in the world.
 
 ## TOP 25 WINE CONSUMING COUTRIES
 
-```{r}
-#copied top 25 beer plot and replaced beer with wine
-top25_wine_plot <- drinks %>% 
-  top_n(25, wine_servings) %>% 
-  ggplot(aes(
-    x = wine_servings,
-    y = reorder(country,wine_servings)
-  )) +
-  geom_col() +
-  labs(
-    x = "Wine Servings", 
-    y = "Country", 
-    title = "Top 25 Wine Consuming Countries") + 
-  theme_minimal() +
-  NULL
-
-top25_wine_plot
+```{r,wine-plot,message=FALSE,warning=FALSE}
+drinks %>% 
+  top_n(25, wine_servings) %>%
+  mutate(name = fct_reorder(country, wine_servings)) %>%
+  ggplot( aes(x=name, y=wine_servings)) +
+    geom_bar(stat="identity", fill="#008080", alpha=.6, width=.4) +
+    coord_flip() +
+    xlab("") + ylab("WINE SERVINGS")+
+    theme_bw()
 ```
 
 > In the wine consumption rankings, 9 of the top 10 are *European countries*. Most areas of Europe (especially the low latitudes) are very suitable for growing grapes due to sufficient sunlight and fertile soil. The typical ones are Southern France, Portugal, Andorra, Italy, and Greece. This may develop the people's habit of drinking wine.
 
 ```{r}
-top25_spirit_plot <- drinks %>% 
-  top_n(25, spirit_servings) %>% 
-  ggplot(aes(
-    x = spirit_servings,
-    y = reorder(country,spirit_servings)
-  )) +
-  geom_col() +
-  labs(
-    x = "Spirit Servings", 
-    y = "Country", 
-    title = "Top 25 Spirit Consuming Countries") + 
-  theme_minimal() +
-  NULL
-
-top25_spirit_plot
+drinks %>% 
+  top_n(25, spirit_servings) %>%
+  mutate(name = fct_reorder(country, spirit_servings)) %>%
+  ggplot( aes(x=name, y=spirit_servings)) +
+    geom_bar(stat="identity", fill="#6b4226", alpha=.6, width=.4) +
+    coord_flip() +
+    xlab("") + ylab("SPIRIT SERVINGS")+
+    theme_bw()
 ```
+
+
 
 
 
