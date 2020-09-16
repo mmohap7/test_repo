@@ -117,9 +117,30 @@ p
 ```
 
 
-```{r}
+```{r,warnings=FALSE,echo=FALSE,message=FALSE}
+data(gapminder, package = "gapminder")
+plotdata <- gapminder %>%
+  filter(year == 2007) %>%
+  rename(
+         value = pop) %>%
+  mutate(region = tolower(country)) 
 
+
+
+library(choroplethr)
+
+p<-country_choropleth(plotdata,aes(x=long, y=lat, size=pop, fill=country),
+                   num_colors=9) +
+  scale_fill_brewer(palette="YlOrRd") +
+  labs(title = "Population by country",
+       subtitle = "Gapminder 2007 data",
+       caption = "source: https://www.gapminder.org",
+       fill = "Population") +theme_ipsum()
+
+p <- ggplotly(p)
+p
 ```
+
 
 
 
@@ -127,7 +148,7 @@ p
 ```{r,message=FALSE}
  plot1<- ggplot(data = country_data, mapping = aes(x = year, y = lifeExp))+
    geom_point() +
-   geom_smooth(se = FALSE) +
+   geom_smooth(se = FALSE) + 
    labs(title = "Life Expectancy in India over the years",
        x = "Year",
        y = "Life Expectancy") +
