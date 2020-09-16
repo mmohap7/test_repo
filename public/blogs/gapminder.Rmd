@@ -13,7 +13,7 @@ knitr::opts_chunk$set(echo = TRUE)
 Founded in Stockholm by Ola Rosling, Anna Rosling Rönnlund and Hans Rosling, GapMinder is a non-profit venture promoting sustainable global development and  achievement of the United Nations Millennium Development Goals. It seeks to  increase the use and understanding of statistics about social, economic, and
 environmental development at local, national, and global levels.
 
-It has over **200** indicators for all **192** United Nations Member countries.
+It has over **200** indicators for all **192** United Nations member countries.
 
 
 
@@ -31,12 +31,17 @@ library(here)
 
 ```
 
-```{r}
+```{r,message=FALSE,echo=FALSE}
+
+library(kableExtra)
 #gives us valuable information for initial exploratory data analysis
 glimpse(gapminder)
+  
 
 # look at the first 20 rows of the dataframe
-head(gapminder, 20) 
+head(gapminder, 20) %>% 
+  kbl() %>%
+  kable_paper("hover", full_width = F)
 
 
 ```
