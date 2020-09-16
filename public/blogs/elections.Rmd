@@ -98,8 +98,36 @@ combined_plot
 
 You can also embed plots, for example:
 
-```{r pressure, echo=FALSE}
-plot(pressure)
+```{r pressure, echo=FALSE,fig.width=20}
+#Attempting to loop plots
+library(patchwork)
+
+#selecting top 10 rows from Total_contb
+top_10_candidates <- Total_contb %>%
+  slice_max(total_amt,n = 10)
+
+plots <- list()
+
+#creating a loop to run plots
+Candidate_plots <- 1
+for(politicians in top_10_candidates$cand_nm){
+  plots[[Candidate_plots]] <- ggplot(filter(campaign,cand_nm == politicians & state == "CA") %>%  
+                         group_by(primary_city) %>% 
+                         summarise(total_amt_county = sum(contb_receipt_amt)) %>%
+                         arrange(desc(total_amt_county)) %>%
+                         slice_max(total_amt_county,n=10),aes(
+                           x = total_amt_county,
+                           y = reorder(primary_city,total_amt_county)
+                           ))+
+    geom_col(fill= "blue") +
+    labs(title=politicians) +
+    theme_clean() + 
+    ylab(" ") +
+    xlab("Amount") +
+    scale_x_continuous(labels = scales::comma)
+Candidate_plots <- Candidate_plots + 1
+}
+wrap_plots(plots,ncol =5)
 ```
 
 Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
