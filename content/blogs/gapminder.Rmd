@@ -4,7 +4,7 @@ output: html_document
 slug: gapminder
 ---
 
-```{r setup, include=FALSE}
+```{r setup, include=FALSE,message=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
@@ -14,7 +14,7 @@ This is an R Markdown document. Markdown is a simple formatting syntax for autho
 
 When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
 
-```{r gapminder,echo=FALSE}
+```{r gapminder,echo=FALSE,message=FALSE}
 library(tidyverse)  # Load ggplot2, dplyr, and all the other tidyverse packages
 library(gapminder)  # gapminder dataset
 library(here)
@@ -22,7 +22,7 @@ library(here)
 ```
 
 ```{r}
-glimpse(gapminder)
+#glimpse(gapminder)
 
 head(gapminder, 20) # look at the first 20 rows of the dataframe
 
@@ -36,7 +36,7 @@ continent_data <- gapminder %>%
             filter(continent == "Asia")
 ```
 
-```{r}
+```{r,warning=FALSE}
 plot1 <- ggplot(data = country_data, mapping = aes(x = year, y = lifeExp))+
   geom_point() +
   geom_smooth(se = FALSE)+
