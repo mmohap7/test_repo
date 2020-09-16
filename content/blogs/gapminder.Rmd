@@ -54,17 +54,76 @@ continent_data <- gapminder %>%
             filter(continent == "Asia")
 ```
 
-### LIFE EXPECTANCY OF INDIA (1950-2020)
 
-```{r,warning=FALSE,message=FALSE}
+```{r, india-lifeExp-interactive-plot}
+# Libraries
 
-plot1 <- ggplot(data = country_data, mapping = aes(x = year, y = lifeExp))+
-  geom_point() +
-  geom_smooth(se = FALSE)+
- NULL 
+#plotly for making our graph interactive
+library(plotly)
 
-plot1
+#hrbrthemes for amazing themes
+library(hrbrthemes)
+
+
+
+# Area chart
+p <- country_data %>%
+  ggplot( aes(x=year, y=lifeExp)) +
+    geom_area(fill="#FFA500", alpha=0.5) +
+    geom_line(color="#69b3a2") +
+    ylab("Life Expectancy in India") +
+    theme_ipsum()
+
+# Turn it interactive with ggplotly
+p <- ggplotly(p)
+p
+
 ```
+
+
+
+### LIFE EXPECTANCY VS GDP OF ASIAN COUNTRIES
+
+```{r,warning=FALSE,message=FALSE,results=FALSE}
+
+# Libraries
+library(ggplot2)
+library(dplyr)
+library(hrbrthemes)
+library(viridis)
+
+# The dataset is provided in the gapminder library
+library(gapminder)
+data <- gapminder %>% filter(year=="2007") %>% dplyr::select(-year)
+
+# Most basic bubble plot
+p<-data %>% filter(continent=="Asia") %>%
+  arrange(desc(pop)) %>%
+  mutate(country = factor(country,country)) %>%
+  ggplot(aes(x=gdpPercap, y=lifeExp, size=pop, fill=country)) +
+    geom_point(alpha=0.5, shape=21, color="black") +
+    scale_size(range = c(.1, 24), name="Population (M)") +
+    scale_fill_viridis(discrete=TRUE, guide=FALSE, option="A") +
+    theme_ipsum_pub() +
+    theme(legend.position="bottom") +
+    ylab("Life Expectancy") +
+    xlab("Gdp per Capita") +
+    theme(legend.position = "none")
+```
+
+```{r}
+p <- ggplotly(p)
+p
+```
+
+
+```{r}
+
+```
+
+
+
+
 ```{r,message=FALSE}
  plot1<- ggplot(data = country_data, mapping = aes(x = year, y = lifeExp))+
    geom_point() +
@@ -77,6 +136,7 @@ plot1
 
 print(plot1)
 ```
+
 
 ```{r,message=FALSE}
  ggplot(data = continent_data , mapping = aes(x = year , y = lifeExp , colour=country ))+
