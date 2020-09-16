@@ -132,8 +132,7 @@ When you click the Knit button a document will be generated that includes both c
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>/blogs/weather/</guid>
-      <description>R Markdown This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see http://rmarkdown.rstudio.com.
-When you click the Knit button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:</description>
+      <description>EXPLORING NASA WEATHER DATASET library(kableExtra) ## ## Attaching package: &amp;#39;kableExtra&amp;#39; ## The following object is masked from &amp;#39;package:dplyr&amp;#39;: ## ## group_rows weather_select &amp;lt;- weather %&amp;gt;% select(Year:Dec) tidyweather &amp;lt;- weather_select %&amp;gt;% pivot_longer( names_to = &amp;quot;Month&amp;quot;, values_to = &amp;quot;delta&amp;quot;, cols = -Year ) head(tidyweather, 20) %&amp;gt;% kbl() %&amp;gt;% kable_paper(&amp;quot;hover&amp;quot;, full_width = F)   Year  Month  delta      1880  Jan  -0.54    1880  Feb  -0.</description>
     </item>
     
   </channel>

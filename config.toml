@@ -117,8 +117,8 @@ disqusShortname = ""
 
     [[params.tiles.showcase]]
       title = "WEATHER ANALYSIS"
-      subtitle = "Ipsum Dolor Sit Amet"
-      image = "pic05.jpg"
+      subtitle = "Analysing NASA weather dataset"
+      image = "nasa.jpg"
       url = "blogs/weather"
 
     [[params.tiles.showcase]]

@@ -4,29 +4,29 @@ output: html_document
 slug: weather
 ---
 
-```{r setup, include=FALSE}
+```{r setup, include=FALSE,message=FALSE,echo=FALSE,warning=FALSE,echo=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## R Markdown
+## EXPLORING NASA WEATHER DATASET
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
-
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
-```{r,echo=FALSE}
+```{r,echo=FALSE,message=FALSE,warning=FALSE}
 library(tidyverse)  # Load ggplot2, dplyr, and all the other tidyverse packages
 library(here)
 ```
 
 
-```{r brexit,echo=FALSE}
+```{r brexit,echo=FALSE,message=FALSE,warning=FALSE}
 weather <- 
   read_csv("https://data.giss.nasa.gov/gistemp/tabledata_v3/NH.Ts+dSST.csv", 
            skip = 1, 
            na = "***")
 ```
 
-```{r}
+```{r,warning=FALSE}
+
+library(kableExtra)
+
 weather_select <- weather %>% 
   select(Year:Dec)
 
@@ -36,10 +36,13 @@ tidyweather <- weather_select %>%
     values_to = "delta",
     cols = -Year
   )
-tidyweather
+
+head(tidyweather, 20) %>% 
+  kbl() %>%
+  kable_paper("hover", full_width = F)
 ```
 
-```{r}
+```{r, message=FALSE, warning=FALSE}
 library(lubridate)
 tidyweather <- tidyweather %>%
   mutate(date = ymd(paste(as.character(Year), Month, "1")),

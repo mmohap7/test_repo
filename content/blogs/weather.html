@@ -4,43 +4,18 @@ output: html_document
 slug: weather
 ---
 
+<script src="/rmarkdown-libs/kePrint/kePrint.js"></script>
+<link href="/rmarkdown-libs/lightable/lightable.css" rel="stylesheet" />
 
 
-<div id="r-markdown" class="section level2">
-<h2>R Markdown</h2>
-<p>This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <a href="http://rmarkdown.rstudio.com" class="uri">http://rmarkdown.rstudio.com</a>.</p>
-<p>When you click the <strong>Knit</strong> button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:</p>
-<pre><code>## ── Attaching packages ──────────────────────────────────────────────────────────────────────────────────────── tidyverse 1.3.0 ──</code></pre>
-<pre><code>## ✓ ggplot2 3.3.2     ✓ purrr   0.3.4
-## ✓ tibble  3.0.3     ✓ dplyr   1.0.2
-## ✓ tidyr   1.1.2     ✓ stringr 1.4.0
-## ✓ readr   1.3.1     ✓ forcats 0.5.0</code></pre>
-<pre><code>## ── Conflicts ─────────────────────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
-## x dplyr::filter() masks stats::filter()
-## x dplyr::lag()    masks stats::lag()</code></pre>
-<pre><code>## here() starts at /Users/melonicamohapatra/Downloads/test_repo</code></pre>
-<pre><code>## Parsed with column specification:
-## cols(
-##   Year = col_double(),
-##   Jan = col_double(),
-##   Feb = col_double(),
-##   Mar = col_double(),
-##   Apr = col_double(),
-##   May = col_double(),
-##   Jun = col_double(),
-##   Jul = col_double(),
-##   Aug = col_double(),
-##   Sep = col_double(),
-##   Oct = col_double(),
-##   Nov = col_double(),
-##   Dec = col_double(),
-##   `J-D` = col_double(),
-##   `D-N` = col_double(),
-##   DJF = col_double(),
-##   MAM = col_double(),
-##   JJA = col_double(),
-##   SON = col_double()
-## )</code></pre>
+<div id="exploring-nasa-weather-dataset" class="section level2">
+<h2>EXPLORING NASA WEATHER DATASET</h2>
+<pre class="r"><code>library(kableExtra)</code></pre>
+<pre><code>## 
+## Attaching package: &#39;kableExtra&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:dplyr&#39;:
+## 
+##     group_rows</code></pre>
 <pre class="r"><code>weather_select &lt;- weather %&gt;% 
   select(Year:Dec)
 
@@ -50,28 +25,249 @@ tidyweather &lt;- weather_select %&gt;%
     values_to = &quot;delta&quot;,
     cols = -Year
   )
-tidyweather</code></pre>
-<pre><code>## # A tibble: 1,680 x 3
-##     Year Month delta
-##    &lt;dbl&gt; &lt;chr&gt; &lt;dbl&gt;
-##  1  1880 Jan   -0.54
-##  2  1880 Feb   -0.38
-##  3  1880 Mar   -0.26
-##  4  1880 Apr   -0.37
-##  5  1880 May   -0.11
-##  6  1880 Jun   -0.22
-##  7  1880 Jul   -0.23
-##  8  1880 Aug   -0.24
-##  9  1880 Sep   -0.26
-## 10  1880 Oct   -0.32
-## # … with 1,670 more rows</code></pre>
-<pre class="r"><code>library(lubridate)</code></pre>
-<pre><code>## 
-## Attaching package: &#39;lubridate&#39;</code></pre>
-<pre><code>## The following objects are masked from &#39;package:base&#39;:
-## 
-##     date, intersect, setdiff, union</code></pre>
-<pre class="r"><code>tidyweather &lt;- tidyweather %&gt;%
+
+head(tidyweather, 20) %&gt;% 
+  kbl() %&gt;%
+  kable_paper(&quot;hover&quot;, full_width = F)</code></pre>
+<table class=" lightable-paper lightable-hover" style='font-family: "Arial Narrow", arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;'>
+<thead>
+<tr>
+<th style="text-align:right;">
+Year
+</th>
+<th style="text-align:left;">
+Month
+</th>
+<th style="text-align:right;">
+delta
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+1880
+</td>
+<td style="text-align:left;">
+Jan
+</td>
+<td style="text-align:right;">
+-0.54
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1880
+</td>
+<td style="text-align:left;">
+Feb
+</td>
+<td style="text-align:right;">
+-0.38
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1880
+</td>
+<td style="text-align:left;">
+Mar
+</td>
+<td style="text-align:right;">
+-0.26
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1880
+</td>
+<td style="text-align:left;">
+Apr
+</td>
+<td style="text-align:right;">
+-0.37
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1880
+</td>
+<td style="text-align:left;">
+May
+</td>
+<td style="text-align:right;">
+-0.11
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1880
+</td>
+<td style="text-align:left;">
+Jun
+</td>
+<td style="text-align:right;">
+-0.22
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1880
+</td>
+<td style="text-align:left;">
+Jul
+</td>
+<td style="text-align:right;">
+-0.23
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1880
+</td>
+<td style="text-align:left;">
+Aug
+</td>
+<td style="text-align:right;">
+-0.24
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1880
+</td>
+<td style="text-align:left;">
+Sep
+</td>
+<td style="text-align:right;">
+-0.26
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1880
+</td>
+<td style="text-align:left;">
+Oct
+</td>
+<td style="text-align:right;">
+-0.32
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1880
+</td>
+<td style="text-align:left;">
+Nov
+</td>
+<td style="text-align:right;">
+-0.37
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1880
+</td>
+<td style="text-align:left;">
+Dec
+</td>
+<td style="text-align:right;">
+-0.48
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1881
+</td>
+<td style="text-align:left;">
+Jan
+</td>
+<td style="text-align:right;">
+-0.19
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1881
+</td>
+<td style="text-align:left;">
+Feb
+</td>
+<td style="text-align:right;">
+-0.25
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1881
+</td>
+<td style="text-align:left;">
+Mar
+</td>
+<td style="text-align:right;">
+0.02
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1881
+</td>
+<td style="text-align:left;">
+Apr
+</td>
+<td style="text-align:right;">
+-0.02
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1881
+</td>
+<td style="text-align:left;">
+May
+</td>
+<td style="text-align:right;">
+-0.06
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1881
+</td>
+<td style="text-align:left;">
+Jun
+</td>
+<td style="text-align:right;">
+-0.36
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1881
+</td>
+<td style="text-align:left;">
+Jul
+</td>
+<td style="text-align:right;">
+-0.06
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1881
+</td>
+<td style="text-align:left;">
+Aug
+</td>
+<td style="text-align:right;">
+-0.03
+</td>
+</tr>
+</tbody>
+</table>
+<pre class="r"><code>library(lubridate)
+tidyweather &lt;- tidyweather %&gt;%
   mutate(date = ymd(paste(as.character(Year), Month, &quot;1&quot;)),
          month = month(date, label=TRUE),
          year = year(date))
@@ -85,9 +281,6 @@ tidyweather_plot &lt;- ggplot(tidyweather, aes(x=date, y = delta))+
   )
 
 tidyweather_plot</code></pre>
-<pre><code>## `geom_smooth()` using method = &#39;gam&#39; and formula &#39;y ~ s(x, bs = &quot;cs&quot;)&#39;</code></pre>
-<pre><code>## Warning: Removed 5 rows containing non-finite values (stat_smooth).</code></pre>
-<pre><code>## Warning: Removed 5 rows containing missing values (geom_point).</code></pre>
 <p><img src="/blogs/weather_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
 <pre class="r"><code>tidyweather_plot +
   facet_wrap(~month)</code></pre>
