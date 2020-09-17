@@ -170,6 +170,7 @@ disqusShortname = ""
     # Contact Section
     # You can add multiple emails, phone numbers, or addresses
     # by copying the corresponding map with frontmatter code.
+    
     [[params.contact.email]]
     title = "Email"
     email = "mmohapatra.mam2021@london.edu"
@@ -178,7 +179,7 @@ disqusShortname = ""
     #title = "Phone"
    # phone = "(000) 000-0000 x1234"
 
-   # [[params.contact.address]]
+    [[params.contact.address]]
     title = "London Business School"
     street = "Street"
     city = "London"
@@ -190,19 +191,19 @@ disqusShortname = ""
     copyright = "Company Name"
 
     # Uses font awesome icons
-   # [[params.footer.social]]
-    #  icon = "fa-twitter"
-     # url= "https://www.twitter.com"
-      #label = "Twitter"
+    [[params.footer.social]]
+      icon = "fa-twitter"
+      url= "https://www.twitter.com"
+      label = "Twitter"
 
-   # [[params.footer.social]]
-    #  icon = "fa-facebook"
-     # url= "https://www.facebook.com"
-    #  label = "Facebook"
+   [[params.footer.social]]
+      icon = "fa-facebook"
+      url= "https://www.facebook.com"
+    label = "Facebook"
 
     [[params.footer.social]]
       icon = "fa-instagram"
-      url= "https://www.instagram.com/melo.ni.ca"
+      url= "https://www.instagram.com/"
       label = "Instagram"
     
     [[params.footer.social]]
