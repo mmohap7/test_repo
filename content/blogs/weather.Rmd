@@ -23,7 +23,8 @@ weather <-
            na = "***")
 ```
 
-```{r,warning=FALSE}
+```{r,warning=FALSE,message=FALSE}
+#we're using the libarry KableExtra to represent our data in table format
 
 library(kableExtra)
 
@@ -43,7 +44,10 @@ head(tidyweather, 20) %>%
 ```
 
 ```{r, message=FALSE, warning=FALSE}
+
+#we are using lubridate package to extract date, month, year from our dates
 library(lubridate)
+library(plotly)
 tidyweather <- tidyweather %>%
   mutate(date = ymd(paste(as.character(Year), Month, "1")),
          month = month(date, label=TRUE),
@@ -57,13 +61,19 @@ tidyweather_plot <- ggplot(tidyweather, aes(x=date, y = delta))+
     title = "Weather Anomalies"
   )
 
+tidyweather_plot <- ggplotly(tidyweather_plot)
+
 tidyweather_plot
 ```
-```{r}
+
+> As seen here the delta quantifying weather anomalies has been increasing singnificantly over the years.
+
+```{r,message=FALSE,warning=FALSE}
 tidyweather_plot +
   facet_wrap(~month)
 ```
-```{r}
+```{r,message=FALSE,warning=FALSE}
+
 comparison <- tidyweather %>% 
   filter(Year>= 1881) %>%     #remove years prior to 1881
   #create new variable 'interval', and assign values based on criteria below:
@@ -76,7 +86,7 @@ comparison <- tidyweather %>%
   ))
 ```
 
-```{r}
+```{r,message=FALSE,warning=FALSE}
 ggplot(comparison, aes(x=delta, fill=interval))+
   geom_density(alpha=0.2) +   #density plot with tranparency set to 20%
   theme_bw() +                #theme
@@ -86,7 +96,9 @@ ggplot(comparison, aes(x=delta, fill=interval))+
   )
 ```
 
-```{r}
+>  According to  he desity plot major delta change occures from 1951-1980 and this is majorly because there was an increase in industrial activity which required fuel. This era also wittnessed catastrophic events such as cuban missile crisis in 1962 and two energy crises in 1973 and 1979.
+
+```{r,warning=FALSE,message=FALSE}
 #creating yearly averages
 average_annual_anomaly <- tidyweather %>% 
   group_by(Year) %>%   #grouping data by Year

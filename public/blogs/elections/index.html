@@ -85,6 +85,8 @@
 
 <div id="us-elections" class="section level2">
 <h2>2016 US Elections</h2>
+<div id="we-are-analysing-amount-contributed-towards-campaigns-of-different-presidential-candidates-from-california" class="section level4">
+<h4>We are analysing amount contributed towards campaigns of different presidential candidates from California</h4>
 <pre class="r"><code>library(tidyverse)  # Load ggplot2, dplyr, and all the other tidyverse packages
 library(mosaic)
 library(ggthemes)
@@ -109,7 +111,8 @@ glimpse(CA_contributors_2016)</code></pre>
 <pre class="r"><code>zip_codes &lt;- read_csv(&quot;zip_code_database.csv&quot;)
 
 CA_contributors_2016$zip &lt;- as.character(CA_contributors_2016$zip)</code></pre>
-<pre class="r"><code>campaign &lt;- inner_join(CA_contributors_2016,zip_codes,by=&#39;zip&#39;)
+<pre class="r"><code>#using inner join to get a dataframe containing information from both CA_contributors and zip csvs
+campaign &lt;- inner_join(CA_contributors_2016,zip_codes,by=&#39;zip&#39;)
 glimpse(campaign)</code></pre>
 <pre><code>## Rows: 1,292,843
 ## Columns: 19
@@ -132,11 +135,15 @@ glimpse(campaign)</code></pre>
 ## $ decommissioned       &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …
 ## $ estimated_population &lt;dbl&gt; 5652, 5624, 27988, 11811, 1879, 26728, 33427, 33…
 ## $ notes                &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, &quot;no NWS data…</code></pre>
-<pre class="r"><code>Total_contb &lt;-campaign %&gt;% 
+<pre class="r"><code>#grouping by candidates to calculate the total aount received towards their campaigns
+
+Total_contb &lt;-campaign %&gt;% 
   group_by(cand_nm) %&gt;% 
   summarise(total_amt = sum(contb_receipt_amt)) %&gt;% 
   arrange(desc(total_amt))</code></pre>
-<pre class="r"><code>Clinton_plot &lt;- ggplot(filter(campaign,cand_nm==&quot;Clinton, Hillary Rodham&quot; &amp; state == &quot;CA&quot;) %&gt;%  
+<pre class="r"><code>#Filtering the campaign by candidate, Hillary Clinton and state, California
+
+Clinton_plot &lt;- ggplot(filter(campaign,cand_nm==&quot;Clinton, Hillary Rodham&quot; &amp; state == &quot;CA&quot;) %&gt;%  
                group_by(primary_city) %&gt;% 
                summarise(total_amt_county = sum(contb_receipt_amt)) %&gt;%
                arrange(desc(total_amt_county)) %&gt;%
@@ -150,7 +157,8 @@ glimpse(campaign)</code></pre>
   xlab(&quot;Amount&quot;) + 
   scale_x_continuous(labels=scales::comma) +
   NULL</code></pre>
-<pre class="r"><code>Trump_plot &lt;- ggplot(filter(campaign,cand_nm==&quot;Trump, Donald J.&quot; &amp; state == &quot;CA&quot;) %&gt;%  
+<pre class="r"><code>#Filtering the campaign by candidate, Donald Trump and state, California
+Trump_plot &lt;- ggplot(filter(campaign,cand_nm==&quot;Trump, Donald J.&quot; &amp; state == &quot;CA&quot;) %&gt;%  
                        group_by(primary_city) %&gt;% 
                        summarise(total_amt_county = sum(contb_receipt_amt)) %&gt;%
                        arrange(desc(total_amt_county)) %&gt;%
@@ -163,14 +171,16 @@ glimpse(campaign)</code></pre>
   xlab(&quot;Amount&quot;) +
   scale_x_continuous(labels = scales::comma) +
   NULL</code></pre>
-<pre class="r"><code>library(patchwork)
+<pre class="r"><code>#Joining two graphs together using patchwork
+library(patchwork)
 
 combined_plot &lt;- Trump_plot +  
   Clinton_plot + 
   plot_annotation(title = &quot;Where did the candidates raise most money?&quot;)
 
 combined_plot</code></pre>
-<p><img src="/blogs/elections_files/figure-html/unnamed-chunk-8-1.png" width="1440" /></p>
+<p><img src="/blogs/elections_files/figure-html/unnamed-chunk-7-1.png" width="1440" /></p>
+</div>
 </div>
 <div id="including-plots" class="section level2">
 <h2>Including Plots</h2>
@@ -202,6 +212,8 @@ for(politicians in top_10_candidates$cand_nm){
     scale_x_continuous(labels = scales::comma)
 Candidate_plots &lt;- Candidate_plots + 1
 }
+
+#wrapping plots together 
 wrap_plots(plots,ncol =5)</code></pre>
 <p><img src="/blogs/elections_files/figure-html/pressure-1.png" width="1920" /></p>
 </div>
@@ -219,13 +231,11 @@ wrap_plots(plots,ncol =5)</code></pre>
         <div class="inner">
             <ul class="icons">
                 
-                    <li><a href="https://www.twitter.com" class="icon alt fa-twitter" target="_blank"><span class="label">Twitter</span></a></li>
-                
                     <li><a href="https://www.instagram.com/melo.ni.ca" class="icon alt fa-instagram" target="_blank"><span class="label">Instagram</span></a></li>
                 
                     <li><a href="https://www.github.com/mmohap7" class="icon alt fa-github" target="_blank"><span class="label">GitHub</span></a></li>
                 
-                    <li><a href="https://www.linkedin.com" class="icon alt fa-linkedin" target="_blank"><span class="label">LinkedIn</span></a></li>
+                    <li><a href="https://www.linkedin.com/public-profile/settings?trk=d_flagship3_profile_self_view_public_profile&amp;lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_self_edit_top_card%3B1w8cFq63Rn%2BNB%2Bbc7M22VQ%3D%3D" class="icon alt fa-linkedin" target="_blank"><span class="label">LinkedIn</span></a></li>
                 
             </ul>
             <ul class="copyright">

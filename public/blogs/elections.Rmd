@@ -10,7 +10,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## 2016 US Elections
 
-
+#### We are analysing amount contributed towards campaigns of different presidential candidates from California
 
 ```{r, message=FALSE,warning=FALSE}
 library(tidyverse)  # Load ggplot2, dplyr, and all the other tidyverse packages
@@ -41,11 +41,13 @@ zip_codes <- read_csv("zip_code_database.csv")
 CA_contributors_2016$zip <- as.character(CA_contributors_2016$zip)
 ```
 
-```{r}
+```{r,campagin}
+#using inner join to get a dataframe containing information from both CA_contributors and zip csvs
 campaign <- inner_join(CA_contributors_2016,zip_codes,by='zip')
 glimpse(campaign)
 ```
 ```{r,message=FALSE,warning=FALSE}
+#grouping by candidates to calculate the total aount received towards their campaigns
 
 Total_contb <-campaign %>% 
   group_by(cand_nm) %>% 
@@ -54,6 +56,8 @@ Total_contb <-campaign %>%
 ```
 
 ```{r,message=FALSE,warning=FALSE}
+
+#Filtering the campaign by candidate, Hillary Clinton and state, California
 
 Clinton_plot <- ggplot(filter(campaign,cand_nm=="Clinton, Hillary Rodham" & state == "CA") %>%  
                group_by(primary_city) %>% 
@@ -72,6 +76,9 @@ Clinton_plot <- ggplot(filter(campaign,cand_nm=="Clinton, Hillary Rodham" & stat
 ```
 
 ```{r,message=FALSE,warning=FALSE}
+
+
+#Filtering the campaign by candidate, Donald Trump and state, California
 Trump_plot <- ggplot(filter(campaign,cand_nm=="Trump, Donald J." & state == "CA") %>%  
                        group_by(primary_city) %>% 
                        summarise(total_amt_county = sum(contb_receipt_amt)) %>%
@@ -88,6 +95,8 @@ Trump_plot <- ggplot(filter(campaign,cand_nm=="Trump, Donald J." & state == "CA"
 ```
 
 ```{r,fig.width=15}
+
+#Joining two graphs together using patchwork
 library(patchwork)
 
 combined_plot <- Trump_plot +  
@@ -101,7 +110,7 @@ combined_plot
 
 
 
-```{r pressure,message=FALSE,warning=FALSE,fig.width=20}
+```{r pressure,message=FALSE,warning=FALSE,fig.width=20,fig.height=15}
 #Attempting to loop plots
 library(patchwork)
 
@@ -130,6 +139,8 @@ for(politicians in top_10_candidates$cand_nm){
     scale_x_continuous(labels = scales::comma)
 Candidate_plots <- Candidate_plots + 1
 }
+
+#wrapping plots together 
 wrap_plots(plots,ncol =5)
 ```
 
