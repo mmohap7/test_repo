@@ -8,12 +8,11 @@ slug: elections
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## R Markdown
+## 2016 US Elections
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
-```{r}
+
+```{r, message=FALSE,warning=FALSE}
 library(tidyverse)  # Load ggplot2, dplyr, and all the other tidyverse packages
 library(mosaic)
 library(ggthemes)
@@ -28,30 +27,33 @@ library(patchwork)
 ```
 
 
-```{r cars}
+```{r, message=FALSE,warning=FALSE}
+
+#using vroom to download a large sized file instead of the usual read_csv
 
 CA_contributors_2016 <- vroom("CA_contributors_2016.csv")
-
 glimpse(CA_contributors_2016)
 ```
 
-```{r}
+```{r,message=FALSE,warning=FALSE}
 zip_codes <- read_csv("zip_code_database.csv")
 
 CA_contributors_2016$zip <- as.character(CA_contributors_2016$zip)
 ```
+
 ```{r}
 campaign <- inner_join(CA_contributors_2016,zip_codes,by='zip')
 glimpse(campaign)
 ```
-```{r}
+```{r,message=FALSE,warning=FALSE}
+
 Total_contb <-campaign %>% 
   group_by(cand_nm) %>% 
   summarise(total_amt = sum(contb_receipt_amt)) %>% 
   arrange(desc(total_amt))
 ```
 
-```{r}
+```{r,message=FALSE,warning=FALSE}
 
 Clinton_plot <- ggplot(filter(campaign,cand_nm=="Clinton, Hillary Rodham" & state == "CA") %>%  
                group_by(primary_city) %>% 
@@ -69,7 +71,7 @@ Clinton_plot <- ggplot(filter(campaign,cand_nm=="Clinton, Hillary Rodham" & stat
   NULL
 ```
 
-```{r}
+```{r,message=FALSE,warning=FALSE}
 Trump_plot <- ggplot(filter(campaign,cand_nm=="Trump, Donald J." & state == "CA") %>%  
                        group_by(primary_city) %>% 
                        summarise(total_amt_county = sum(contb_receipt_amt)) %>%
@@ -84,7 +86,8 @@ Trump_plot <- ggplot(filter(campaign,cand_nm=="Trump, Donald J." & state == "CA"
   scale_x_continuous(labels = scales::comma) +
   NULL
 ```
-```{r}
+
+```{r,fig.width=15}
 library(patchwork)
 
 combined_plot <- Trump_plot +  
@@ -96,9 +99,9 @@ combined_plot
 
 ## Including Plots
 
-You can also embed plots, for example:
 
-```{r pressure, echo=FALSE,fig.width=20}
+
+```{r pressure,message=FALSE,warning=FALSE,fig.width=20}
 #Attempting to loop plots
 library(patchwork)
 
@@ -130,4 +133,3 @@ Candidate_plots <- Candidate_plots + 1
 wrap_plots(plots,ncol =5)
 ```
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
