@@ -8,7 +8,7 @@ slug: alcohol
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## ANALYSING DRINKS DATASET FROM FIVETHIRTYEIGHT PACKAGE
+## ANALYSING DRINKS DATASET FROM FIVETHIRTYEIGHT PACKAGE 
 
 
 ```{r load-libraries, warning=FALSE, message=FALSE, echo=FALSE}
