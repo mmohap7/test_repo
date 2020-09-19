@@ -1,5 +1,5 @@
 ---
-title: "elections"
+title: "Elections"
 output: html_document
 slug: elections
 ---
@@ -8,7 +8,7 @@ slug: elections
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## 2016 US Elections
+## 2016 United States of America Elections
 
 #### We are analysing amount contributed towards campaigns of different presidential candidates from California
 
