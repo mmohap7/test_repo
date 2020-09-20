@@ -10,7 +10,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## 2016 United States of America Elections
 
-#### We are analysing amount contributed towards campaigns of different presidential candidates from California
+#### We are analysing amount contributed towards campaigns of diffferent presidential candidates from California
 
 ```{r, message=FALSE,warning=FALSE}
 library(tidyverse)  # Load ggplot2, dplyr, and all the other tidyverse packages
